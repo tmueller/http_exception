@@ -1,7 +1,7 @@
-use Test::Exception;
+use strict;
+
 use Test::More;
 use HTTP::Exception;
-use HTTP::Status;
 
 ################################################################################
 eval { HTTP::Exception::200->throw };

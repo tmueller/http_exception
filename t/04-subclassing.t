@@ -1,7 +1,8 @@
+use strict;
+
 use Test::Exception;
 use Test::More;
 use HTTP::Exception;
-use HTTP::Status;
 
 {
     package My::HTTP::Exception;

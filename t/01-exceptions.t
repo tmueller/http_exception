@@ -1,3 +1,5 @@
+use strict;
+
 use Test::Exception;
 use Test::More;
 use HTTP::Exception;
@@ -80,7 +82,7 @@ sub _run_tests_for_exception_object {
     can_ok  $e,
             qw(code status_message as_string);
 
-    ok      !$e->can(_make_exceptions),
+    ok      !$e->can('_make_exceptions'),
             '_make_exceptions is not imported from Loader';
 
 

@@ -1,9 +1,10 @@
+use strict;
+
 use Test::Exception;
 use Test::More;
 use HTTP::Exception;
-use HTTP::Status;
 
-# do we play nicely with other, user defined exception?
+# do we play nicely with other user defined exception?
 
 use Exception::Class ('User::Defined::Exception' => {});
 
