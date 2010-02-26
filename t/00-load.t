@@ -1,10 +1,9 @@
-#!perl -T
-
-use Test::More tests => 1;
+use Test::More;
 
 BEGIN {
-    use_ok( 'HTTP::Exception' ) || print "Bail out!
-";
+    use_ok 'HTTP::Exception';
+    use_ok 'HTTP::Exception::Base';
+    use_ok 'HTTP::Exception::Loader';
 }
 
-diag( "Testing HTTP::Exception $HTTP::Exception::VERSION, Perl $], $^X" );
+done_testing;
