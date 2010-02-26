@@ -3,7 +3,15 @@ Changes
 MANIFEST
 README
 lib/HTTP/Exception.pm
+lib/HTTP/Exception/Base.pm
+lib/HTTP/Exception/Loader.pm
 t/00-load.t
+t/01-exception.t
+t/02-combinations.t
+t/03-nice.t
+t/04-subclassing.t
+t/05-plack.t
+t/06-is_methods.t
+t/07-status_messages.t
 t/manifest.t
-t/pod-coverage.t
 t/pod.t

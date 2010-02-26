@@ -7,9 +7,11 @@ my $builder = Module::Build->new(
     license             => 'perl',
     dist_author         => q{Thomas Mueller <thomas.mi.iller@gmail.com>},
     dist_version_from   => 'lib/HTTP/Exception.pm',
-    build_requires => {
-        'Test::More' => 0,
-    },
+    build_requires => {qw~
+        Test::More          0
+        Exception::Class    0
+        HTTP::Status        5.817
+    ~},
     add_to_cleanup      => [ 'HTTP-Exception-*' ],
     create_makefile_pl => 'traditional',
 );

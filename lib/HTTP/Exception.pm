@@ -18,6 +18,7 @@ Version 0.01000
 our $VERSION = '0.01000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
+# act as a kind of factory here
 sub new  {
     my $class       = shift;
     my $error_code  = shift;
@@ -28,6 +29,7 @@ sub new  {
     "HTTP::Exception::$error_code"->new(@_);
 }
 
+# makes HTTP::Exception->caught possible instead of HTTP::Exception::Base->caught
 sub caught {
     my $self = shift;
     my $e = $@;
