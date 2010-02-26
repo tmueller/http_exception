@@ -1,5 +1,2 @@
-Revision history for HTTP-Exception
-
-0.01    Date/time
-        First version, released on an unsuspecting world.
-
+0.01000 2010-02-29
+        First Implementation of HTTP::Exceptions
