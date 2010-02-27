@@ -1,6 +1,10 @@
 use strict;
 
 use Test::More;
+
+eval "use Plack 0.9913";
+plan skip_all => "Plack 0.9913 required for this test" if $@;
+
 use HTTP::Exception;
 use Plack::Test;
 use HTTP::Request::Common;
