@@ -4,6 +4,8 @@ use strict;
 use warnings;
 use Test::More;
 
+# TODO Make manifest test pass
+
 unless ( $ENV{RELEASE_TESTING} ) {
     plan( skip_all => "Author tests not required for installation" );
 }
