@@ -85,7 +85,10 @@ usefull for, except testing).
 =head1 DESCRIPTION
 
 Every HTTP::Exception is a L<Exception::Class> - Class. So the same mechanisms
-apply as with L<Exception::Class>-classes.
+apply as with L<Exception::Class>-classes. In fact have a look at
+L<Exception::Class>' docs for more general information on exceptions and
+L<Exception::Class::Base> for information on what methods a caught exception
+also has.
 
 HTTP::Exception is only a factory for HTTP::Exception::XXX (where X is a number)
 subclasses. That means that HTTP::Exception->new(404) returns a
@@ -110,7 +113,7 @@ X is a Number and XXX is a valid HTTP-Statuscode
 =head2 HTTP::Exception::STATUS_MESSAGE
 
 STATUS_MESSAGE is the same name as a L<HTTP::Status> Constant B<WITHOUT>
-the HTTP_ at the beginning. So see L<HTTP::Status#Constants> for more details.
+the HTTP_ at the beginning. So see L<HTTP::Status/"Constants"> for more details.
 
 =head1 ACCESSORS
 
@@ -121,10 +124,6 @@ The HTTP-Statuscode
 =head2 status_message
 
 The HTTP-Statusmessage as provided by L<HTTP::Status>
-
-=head1
-
-POD Copy/Pasted from L<HTTP::Status>, so check back there and alert me of changes.
 
 =head2 is_info
 
@@ -158,9 +157,14 @@ Return TRUE if C<$code> is an I<Server Error> status code (5xx). This class
 of status codes is intended for cases in which the server is aware
 that it has erred or is incapable of performing the request.
 
+POD for is_ methods is Copy/Pasted from L<HTTP::Status>, so check back there and
+alert me of changes.
+
 =head1 PLACK
 
-HTTP::Exception can be used with L<Plack::Middleware::HTTPExceptions>.
+HTTP::Exception can be used with L<Plack::Middleware::HTTPExceptions>. But
+HTTP::Exception does not depend on L<Plack>, you can use it anywhere else. It
+just plays nicely with L<Plack>.
 
 =head1 COMPLETENESS
 
@@ -190,8 +194,21 @@ Thomas Mueller, C<< <thomas.mi.iller at gmail.com> >>
 
 =head1 SEE ALSO
 
-L<Exception::Class> L<HTTP::Status>
-L<Plack>, especially L<Plack::Middleware::HTTPExceptions>
+=head2 L<Exception::Class>, L<Exception::Class::Base>
+
+Consult Exception::Class' documentation for the Exception-Mechanism and
+Exception::Class::Base' docs for a list of methods our caught Exception is also
+capable of.
+
+=head2 L<HTTP::Status>
+
+Constants, Statuscodes and Statusmessages
+
+=head2 L<Plack>, especially L<Plack::Middleware::HTTPExceptions>
+
+Have a look at Plack, because it rules in general. In the first place, this
+Module was written as the counterpart for L<Plack::Middleware::HTTPExceptions>,
+but since it doesn't depend on Plack, you can use it anywhere else, too.
 
 =head1 BUGS
 

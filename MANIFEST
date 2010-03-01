@@ -1,6 +1,7 @@
 Build.PL
 Changes
 MANIFEST
+MANIFEST.SKIP
 README
 lib/HTTP/Exception.pm
 lib/HTTP/Exception/Base.pm
@@ -18,3 +19,4 @@ t/manifest.t
 t/pod.t
 Makefile.PL
 META.yml
+

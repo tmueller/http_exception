@@ -67,12 +67,12 @@ test_psgi $app, sub {
     my $cb = shift;
 
     my $res = $cb->(GET "/");
-    is $res->code, 500;
-    is $res->content, 'Internal Server Error';
+    is $res->code,      500;
+    is $res->content,   'Internal Server Error';
 
     for my $test (@tests) {
         my $res = $cb->(GET ($test->{path}));
-        is $res->code, $test->{expected_code};
+        is $res->code,    $test->{expected_code};
         is $res->content, $test->{expected_content} || HTTP::Status::status_message($test->{expected_code});
     }
 
