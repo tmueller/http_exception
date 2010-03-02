@@ -16,7 +16,7 @@ name: HTTP-Exception
 provides:
   HTTP::Exception:
     file: lib/HTTP/Exception.pm
-    version: 0.01003
+    version: 0.01004
   HTTP::Exception::Base:
     file: lib/HTTP/Exception/Base.pm
     version: 0.01000
@@ -28,4 +28,4 @@ requires:
   HTTP::Status: 5.817
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.01003
+version: 0.01004
