@@ -5,17 +5,7 @@ use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-=head1 NAME
-
-HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
-
-=head1 VERSION
-
-Version 0.01002
-
-=cut
-
-our $VERSION = '0.01004';
+our $VERSION = '0.01005';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
@@ -38,6 +28,11 @@ sub caught {
 }
 
 1;
+
+
+=head1 NAME
+
+HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
 =head1 SYNOPSIS
 
@@ -113,7 +108,7 @@ X is a Number and XXX is a valid HTTP-Statuscode
 =head2 HTTP::Exception::STATUS_MESSAGE
 
 STATUS_MESSAGE is the same name as a L<HTTP::Status> Constant B<WITHOUT>
-the HTTP_ at the beginning. So see L<HTTP::Status/"Constants"> for more details.
+the HTTP_ at the beginning. So see L<HTTP::Status/"CONSTANTS"> for more details.
 
 =head1 ACCESSORS
 

@@ -3,16 +3,6 @@ package HTTP::Exception::Base;
 use strict;
 use parent qw(Exception::Class::Base);
 
-=head1 NAME
-
-HTTP::Exception::Base - Base class for exception classes created by HTTP::Exception
-
-=head1 VERSION
-
-Version 0.01000
-
-=cut
-
 our $VERSION = '0.01000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
@@ -22,6 +12,11 @@ sub status_message  { $_[0]->{status_message} || $_[0]->_status_message }
 sub Fields { return qw~status_message~ }
 
 1;
+
+
+=head1 NAME
+
+HTTP::Exception::Base - Base class for exception classes created by HTTP::Exception
 
 =head1 DESCRIPTION
 
