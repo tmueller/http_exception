@@ -2,7 +2,7 @@ NAME
     HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
 VERSION
-    Version 0.01000
+    Version 0.01001
 
 SYNOPSIS
     HTTP::Exception lets you throw HTTP-Errors as Exceptions.
@@ -48,7 +48,10 @@ SYNOPSIS
 
 DESCRIPTION
     Every HTTP::Exception is a Exception::Class - Class. So the same
-    mechanisms apply as with Exception::Class-classes.
+    mechanisms apply as with Exception::Class-classes. In fact have a look
+    at Exception::Class' docs for more general information on exceptions and
+    Exception::Class::Base for information on what methods a caught
+    exception also has.
 
     HTTP::Exception is only a factory for HTTP::Exception::XXX (where X is a
     number) subclasses. That means that HTTP::Exception->new(404) returns a
@@ -71,7 +74,8 @@ NAMING SCHEME
 
   HTTP::Exception::STATUS_MESSAGE
     STATUS_MESSAGE is the same name as a HTTP::Status Constant WITHOUT the
-    HTTP_ at the beginning. So see HTTP::Status#Constants for more details.
+    HTTP_ at the beginning. So see "Constants" in HTTP::Status for more
+    details.
 
 ACCESSORS
   code Readonly
@@ -79,10 +83,6 @@ ACCESSORS
 
   status_message
     The HTTP-Statusmessage as provided by HTTP::Status
-
-
-    POD Copy/Pasted from HTTP::Status, so check back there and alert me of
-    changes.
 
   is_info
     Return TRUE if $code is an *Informational* status code (1xx). This class
@@ -112,9 +112,37 @@ ACCESSORS
     of status codes is intended for cases in which the server is aware that
     it has erred or is incapable of performing the request.
 
-PLACK
-    HTTP::Exception can be used with Plack::Middleware::HTTPExceptions.
+    POD for is_ methods is Copy/Pasted from HTTP::Status, so check back
+    there and alert me of changes.
 
+PLACK
+    HTTP::Exception can be used with Plack::Middleware::HTTPExceptions. But
+    HTTP::Exception does not depend on Plack, you can use it anywhere else.
+    It just plays nicely with Plack.
+
+COMPLETENESS
+    For the sake of completeness, HTTP::Exception provides exceptions for
+    non-error-http-statuscodes. This means you can do
+
+        HTTP::Exception->throw(200);
+
+    which throws an Exception of type OK. Maybe useless, but complete.
+
+CAVEATS
+    The HTTP::Exception-Subclass-Creation relies on HTTP::Status. It's
+    possible that the Subclasses change, when HTTP::Status' constants are
+    changed.
+
+    New Subclasses are created automatically, when constants are added to
+    HTTP::Status. That means in turn, that Subclasses disappear, when
+    constants are removed from HTTP::Status.
+
+    The Changes-File of HTTP::Status indicates, that the last change to its
+    constants was made in 2008. I think, that breaking changes are quite
+    unlikely.
+
+AUTHOR
+    Thomas Mueller, "<thomas.mi.iller at gmail.com>"
 
 INSTALLATION
 

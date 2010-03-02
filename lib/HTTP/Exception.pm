@@ -15,7 +15,7 @@ Version 0.01000
 
 =cut
 
-our $VERSION = '0.01000';
+our $VERSION = '0.01001';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
