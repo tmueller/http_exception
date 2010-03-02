@@ -9,13 +9,16 @@ my $builder = Module::Build->new(
     dist_version_from   => 'lib/HTTP/Exception.pm',
     build_requires => {qw~
         Test::More          0
+        Test::Exception     0
     ~},
     requires => {qw~
         Exception::Class    0
         HTTP::Status        5.817
     ~},
     add_to_cleanup      => [ 'HTTP-Exception-*' ],
-    create_makefile_pl => 'traditional',
+    create_makefile_pl  => 'traditional',
+
+    verbose             => 1,
 );
 
 $builder->create_build_script();

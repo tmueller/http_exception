@@ -88,7 +88,7 @@ sub _run_tests_for_exception_object {
 
     SKIP: {
         # yes, ugly, I know
-        skip q(can't determine expected Errorcode), 1 unless (ref($e) =~ /(\d+)$/);
+        skip q(can't reliably determine expected Errorcode), 1 unless (ref($e) =~ /(\d+)$/);
 
         is  $e->code,
             $1,

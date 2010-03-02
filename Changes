@@ -1,4 +1,11 @@
+0.01002 2010-03-02
+    removed MANIFEST.SKIP from MANIFEST
+    Corrected BuildRequirements in Build.PL (added Test::Exception)
+    Corrected Requirements in Makefile.PL, thought it is recreated automatically
+    fixed t/05.plack to be skipped on systems without Plack
+
 0.01001 2010-03-02
-        Corrected Requirements in Build.PL
+    Corrected Requirements in Build.PL
+
 0.01000 2010-02-29
-        First Implementation of HTTP::Exceptions
+    First Implementation of HTTP::Exceptions

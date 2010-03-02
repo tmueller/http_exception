@@ -11,11 +11,11 @@ HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
 =head1 VERSION
 
-Version 0.01001
+Version 0.01002
 
 =cut
 
-our $VERSION = '0.01001';
+our $VERSION = '0.01002';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here

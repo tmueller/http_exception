@@ -1,30 +1,31 @@
 ---
-name: HTTP-Exception
-version: 0.01001
+abstract: 'throw HTTP-Errors as (Exception::Class-) Exceptions'
 author:
   - 'Thomas Mueller <thomas.mi.iller@gmail.com>'
-abstract: throw HTTP-Errors as (Exception::Class-) Exceptions
-license: perl
-resources:
-  license: http://dev.perl.org/licenses/
 build_requires:
+  Test::Exception: 0
   Test::More: 0
-requires:
-  Exception::Class: 0
-  HTTP::Status: 5.817
 configure_requires:
-  Module::Build: 0.35
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3603'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: HTTP-Exception
 provides:
   HTTP::Exception:
     file: lib/HTTP/Exception.pm
-    version: 0.01001
+    version: 0.01002
   HTTP::Exception::Base:
     file: lib/HTTP/Exception/Base.pm
     version: 0.01000
   HTTP::Exception::Loader:
     file: lib/HTTP/Exception/Loader.pm
     version: 0.01000
-generated_by: Module::Build version 0.35
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+requires:
+  Exception::Class: 0
+  HTTP::Status: 5.817
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.01002

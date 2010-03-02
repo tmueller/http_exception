@@ -11,3 +11,5 @@ cover_db
 pod2htm*.tmp
 HTTP-Exception-*
 *.kpf
+*META.yml
+MANIFEST.bak

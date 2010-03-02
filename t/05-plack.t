@@ -2,8 +2,11 @@ use strict;
 
 use Test::More;
 
-eval "use Plack 0.9913";
-plan skip_all => "Plack 0.9913 required for this test" if $@;
+BEGIN {
+    # Plack 0.9913 brings us Plack::Middleware::HTTPExceptions
+    eval "use Plack 0.9913";
+    plan skip_all => "Plack 0.9913 or newer required for this test" if $@;
+}
 
 use HTTP::Exception;
 use Plack::Test;
