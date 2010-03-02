@@ -97,7 +97,7 @@ This Package calculates the Subclasses' Accessors at compiletime.
 
 =head1 AUTHOR
 
-Thomas Mueller, C<< <thomas.mi.iller at gmail.com> >>
+Thomas Mueller, C<< <tmueller at cpan.org> >>
 
 =head1 BUGS
 

@@ -5,7 +5,7 @@ use Module::Build;
 my $builder = Module::Build->new(
     module_name         => 'HTTP::Exception',
     license             => 'perl',
-    dist_author         => q{Thomas Mueller <thomas.mi.iller@gmail.com>},
+    dist_author         => q{Thomas Mueller <tmueller@cpan.org>},
     dist_version_from   => 'lib/HTTP/Exception.pm',
     build_requires => {qw~
         Test::More          0

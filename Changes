@@ -1,3 +1,6 @@
+0.01006
+    changed EMail-Address in packages to my CPAN-EMail
+
 0.01005
     removed VERSION from pod, too much hassle to keep in sync with $VERSION
 

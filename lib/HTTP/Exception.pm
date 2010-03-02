@@ -5,7 +5,7 @@ use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.01005';
+our $VERSION = '0.01006';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
@@ -185,7 +185,7 @@ constants was made in 2008. I think, that breaking changes are quite unlikely.
 
 =head1 AUTHOR
 
-Thomas Mueller, C<< <thomas.mi.iller at gmail.com> >>
+Thomas Mueller, C<< <tmueller at cpan.org> >>
 
 =head1 SEE ALSO
 
