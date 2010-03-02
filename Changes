@@ -1,3 +1,6 @@
+0.01003 2010-03-02
+    no changes to the module itself, just trying to get shipit to work
+
 0.01002 2010-03-02
     removed MANIFEST.SKIP from MANIFEST
     Corrected BuildRequirements in Build.PL (added Test::Exception)
