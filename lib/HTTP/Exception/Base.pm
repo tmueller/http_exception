@@ -9,11 +9,11 @@ HTTP::Exception::Base - Base class for exception classes created by HTTP::Except
 
 =head1 VERSION
 
-Version 0.01001
+Version 0.01000
 
 =cut
 
-our $VERSION = '0.01001';
+our $VERSION = '0.01000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 sub as_string       { $_[0]->status_message                             }
