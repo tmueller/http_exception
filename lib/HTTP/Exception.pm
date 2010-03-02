@@ -11,7 +11,7 @@ HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
 =head1 VERSION
 
-Version 0.01000
+Version 0.01001
 
 =cut
 

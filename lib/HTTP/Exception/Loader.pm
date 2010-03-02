@@ -10,11 +10,11 @@ HTTP::Exception::Loader - Creates HTTP::Exception subclasses
 
 =head1 VERSION
 
-Version 0.01000
+Version 0.01001
 
 =cut
 
-our $VERSION = '0.01000';
+our $VERSION = '0.01001';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
