@@ -1,6 +1,6 @@
 ---
 name: HTTP-Exception
-version: 0.01000
+version: 0.01001
 author:
   - 'Thomas Mueller <thomas.mi.iller@gmail.com>'
 abstract: throw HTTP-Errors as (Exception::Class-) Exceptions
@@ -8,15 +8,16 @@ license: perl
 resources:
   license: http://dev.perl.org/licenses/
 build_requires:
+  Test::More: 0
+requires:
   Exception::Class: 0
   HTTP::Status: 5.817
-  Test::More: 0
 configure_requires:
   Module::Build: 0.35
 provides:
   HTTP::Exception:
     file: lib/HTTP/Exception.pm
-    version: 0.01000
+    version: 0.01001
   HTTP::Exception::Base:
     file: lib/HTTP/Exception/Base.pm
     version: 0.01000
