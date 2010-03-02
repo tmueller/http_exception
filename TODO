@@ -1,2 +1,1 @@
-- immer EDITOR=nano RELEASE_TESTING=1 shipit --dry-run machen is doof => am besten ein alias in der .bashrc
 - import parameter für 1XX, 2XX, ..., 5XX und ERRORS, CLIENT_ERRORS, ... machen
