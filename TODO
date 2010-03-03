@@ -1,3 +1,12 @@
-- 1XX Zwischenklassen
-- location für 30X fehler
+# DONE - 1XX Zwischenklassen
+# DONE - location für 30X fehler
+- python modul nochma angucken
+- mit miyagawa nochma wegen HTTP::Header reden
 - import parameter für 1XX, 2XX, ..., 5XX und ERRORS, CLIENT_ERRORS, ... machen
+- class::exception::XXX - field / accessor tests
+- class::exception::base - field / accessor tests
+- pidgin/irc auf tmueller umstellen
+- accessor generierung mit Class::Accessor::Fast clashes with new from base => write tests
+    => fix it
+# DONE - as string from Exception::Class::Base
+# DONE - message from exception class base

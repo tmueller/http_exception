@@ -15,7 +15,7 @@ use HTTP::Status;
 
 {
     package My::HTTP::Exception;
-    #use parent 'HTTP::Exception::OK'; # doesn't work WTF?
+    #use parent 'HTTP::Exception::405'; # doesn't work WTF?
     use base 'HTTP::Exception::405';
 
     sub code    { 404 }
@@ -24,7 +24,7 @@ use HTTP::Status;
 
 {
     package My::HTTP::Exception::WithStatusMessage;
-    #use parent 'HTTP::Exception::OK'; # doesn't work WTF?
+    #use parent 'HTTP::Exception::405'; # doesn't work WTF?
     use base 'HTTP::Exception::405';
 
     sub code    { 404 }

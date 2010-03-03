@@ -8,12 +8,13 @@ my $builder = Module::Build->new(
     dist_author         => q{Thomas Mueller <tmueller@cpan.org>},
     dist_version_from   => 'lib/HTTP/Exception.pm',
     build_requires => {qw~
-        Test::More          0
-        Test::Exception     0
+        Test::More              0
+        Test::Exception         0
     ~},
     requires => {qw~
-        Exception::Class    0
-        HTTP::Status        5.817
+        Exception::Class        0
+        HTTP::Status            5.817
+        Class::Accessor::Fast   0.34
     ~},
     add_to_cleanup      => [ 'HTTP-Exception-*' ],
     create_makefile_pl  => 'traditional',

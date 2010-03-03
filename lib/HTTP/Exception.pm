@@ -5,7 +5,7 @@ use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.01007';
+our $VERSION = '0.02000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
@@ -65,17 +65,29 @@ And catch them accordingly.
     if (my $e = HTTP::Exception::405->caught)       { do stuff } # won't catch
     if (my $e = HTTP::Exception::404->caught)       { do stuff } # will catch
     if (my $e = HTTP::Exception::NOT_FOUND->caught) { do stuff } # will catch
+    if (my $e = HTTP::Exception::4XX->caught)       { do stuff } # will catch all 4XX Exceptions
     if (my $e = HTTP::Exception->caught)            { do stuff } # will catch every HTTP::Exception
     if (my $e = Exception::Class->caught)           { do stuff } # catch'em all
 
-You can create Exceptions and not throw them (don't know what that could be
-usefull for, except testing).
+You can create Exceptions and not throw them, because maybe you want to set some
+fields manually. See L<HTTP::Exception/"FIELDS"> and
+L<HTTP::Exception/"ACCESSORS"> for more info.
 
     # is not thrown, ie doesn't die, only created
     my $e = HTTP::Exception->new(404);
+
     # usual stuff works
     $e->code;               # 404
     $e->status_message      # Not Found
+
+    # set status_message to something else
+    $e->status_message('Nothing Here')
+
+    # fails, because code is only an accessor, see section ACCESSORS below
+    # $e->code(403);
+
+    # and finally throw our prepared exception
+    $e->throw;
 
 =head1 DESCRIPTION
 
@@ -103,57 +115,82 @@ Subclassing the subclasses works as expected.
 
 =head2 HTTP::Exception::XXX
 
-X is a Number and XXX is a valid HTTP-Statuscode
+X is a Number and XXX is a valid HTTP-Statuscode. All HTTP-Statuscodes are
+supported. See chapter L<HTTP::Exception/"COMPLETENESS">
 
 =head2 HTTP::Exception::STATUS_MESSAGE
 
 STATUS_MESSAGE is the same name as a L<HTTP::Status> Constant B<WITHOUT>
 the HTTP_ at the beginning. So see L<HTTP::Status/"CONSTANTS"> for more details.
 
-=head1 ACCESSORS
+=head1 ACCESSORS (READONLY)
 
-=head2 code Readonly
-
-The HTTP-Statuscode
-
-=head2 status_message
+=head2 code
 
 The HTTP-Statusmessage as provided by L<HTTP::Status>
 
 =head2 is_info
 
-Return TRUE if C<$code> is an I<Informational> status code (1xx).  This
+Return TRUE if C<$self->code> is an I<Informational> status code (1xx).  This
 class of status code indicates a provisional response which can't have
 any content.
 
 =head2 is_success
 
-Return TRUE if C<$code> is a I<Successful> status code (2xx).
+Return TRUE if C<$self->code> is a I<Successful> status code (2xx).
 
 =head2 is_redirect
 
-Return TRUE if C<$code> is a I<Redirection> status code (3xx). This class of
-status code indicates that further action needs to be taken by the
+Return TRUE if C<$self->code> is a I<Redirection> status code (3xx). This class
+if status code indicates that further action needs to be taken by the
 user agent in order to fulfill the request.
 
 =head2 is_error
 
-Return TRUE if C<$code> is an I<Error> status code (4xx or 5xx).  The function
-return TRUE for both client error or a server error status codes.
+Return TRUE if C<$self->code> is an I<Error> status code (4xx or 5xx).  The
+function return TRUE for both client error or a server error status codes.
 
 =head2 is_client_error
 
-Return TRUE if C<$code> is an I<Client Error> status code (4xx). This class
-of status code is intended for cases in which the client seems to have erred.
+Return TRUE if C<$self->code> is an I<Client Error> status code (4xx). This
+class of status code is intended for cases in which the client seems to
+have erred.
 
 =head2 is_server_error
 
-Return TRUE if C<$code> is an I<Server Error> status code (5xx). This class
-of status codes is intended for cases in which the server is aware
+Return TRUE if C<$self->code> is an I<Server Error> status code (5xx). This
+class of status codes is intended for cases in which the server is aware
 that it has erred or is incapable of performing the request.
 
-POD for is_ methods is Copy/Pasted from L<HTTP::Status>, so check back there and
-alert me of changes.
+I<POD for is_ methods is Copy/Pasted from L<HTTP::Status>, so check back there and
+alert me of changes.>
+
+=head1 FIELDS
+
+Fields are the same as ACCESSORS except they can be set. Either you set them
+during Exception creation (->new) or Exception throwing (->throw).
+
+    HTTP::Exception->new(200, status_message => "Everything's fine");
+    HTTP::Exception::200->new(status_message => "Everything's fine");
+    HTTP::Exception::OK->new(status_message => "Everything's fine");
+
+    HTTP::Exception->throw(200, status_message => "Everything's fine");
+    HTTP::Exception::200->throw(status_message => "Everything's fine");
+    HTTP::Exception::OK->throw(status_message => "Everything's fine");
+
+Catch them in your Webframework like this
+
+    eval { ... }
+    if (my $e = HTTP::Exception->caught) {
+        print $e->code;          # 200
+        print $e->status_message # "Everything's fine" instead of the usual ok
+    }
+
+=head2 status_message
+
+B<DEFAULT> The HTTP-Statusmessage as provided by L<HTTP::Status>
+
+A Message, that represents the Execptions' Status for Humans.
 
 =head1 PLACK
 
@@ -169,6 +206,12 @@ non-error-http-statuscodes. This means you can do
     HTTP::Exception->throw(200);
 
 which throws an Exception of type OK. Maybe useless, but complete.
+A more realworld-example would be a redirection
+
+    # all are exactly the same
+    HTTP::Exception->throw(301, location => 'google.com');
+    HTTP::Exception::301->throw(location => 'google.com');
+    HTTP::Exception::MOVED_PERMANENTLY->throw(location => 'google.com');
 
 =head1 CAVEATS
 

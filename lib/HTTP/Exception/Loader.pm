@@ -2,9 +2,14 @@ package HTTP::Exception::Loader;
 
 use strict;
 use HTTP::Exception::Base;
+use HTTP::Exception::1XX;
+use HTTP::Exception::2XX;
+use HTTP::Exception::3XX;
+use HTTP::Exception::4XX;
+use HTTP::Exception::5XX;
 use HTTP::Status;
 
-our $VERSION = '0.01000';
+our $VERSION = '0.02000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
@@ -22,41 +27,31 @@ sub _make_exceptions {
     for my $http_status (@http_statuses) {
         my $statuscode              = HTTP::Status->$http_status;
         my $http_status_message     = HTTP::Status::status_message($statuscode);
+        my $statuscode_range        = $statuscode;
 
-        $http_status                =~ s/^HTTP_//;  # remove HTTP_ for exception classname
+        # remove HTTP_ for exception classname
+        $http_status                =~ s/^HTTP_//;
+        # replace the last 2 digits with XX for basename creation
+        $statuscode_range           =~ s/\d{2}$/XX/;
+
         my $package_name_code       = 'HTTP::Exception::'.$statuscode;
+        my $package_name_base       = 'HTTP::Exception::'.$statuscode_range;
         my $package_name_message    = 'HTTP::Exception::'.$http_status;
 
         # create a Package like HTTP::Exception::404,
         # but also a Package HTTP::Exception::NOT_FOUND,
         # which inherits from HTTP::Exception::404
+        # HTTP::Exception::404 inherits from HTTP::Exception::4XX
         push @exception_classes,
-            $package_name_code      => {isa => 'HTTP::Exception::Base'},
+            $package_name_code      => {isa => $package_name_base},
             $package_name_message   => {isa => $package_name_code};
 
-        # built them in while we're at it
-        my $is_info         = !!HTTP::Status::is_info         ($statuscode);
-        my $is_success      = !!HTTP::Status::is_success      ($statuscode);
-        my $is_redirect     = !!HTTP::Status::is_redirect     ($statuscode);
-        my $is_error        = !!HTTP::Status::is_error        ($statuscode);
-        my $is_client_error = !!HTTP::Status::is_client_error ($statuscode);
-        my $is_server_error = !!HTTP::Status::is_server_error ($statuscode);
-
-        # should be quite fast, once loaded
-        # is_ -subs are an optimization for speed
         # TODO check whether evaled subs with a ()-prototype are compiled to constants
         $code .= qq~;
 
             package $package_name_code;
             sub code            () { $statuscode }
             sub _status_message () { '$http_status_message' }
-
-            sub is_info         () { '$is_info'           }
-            sub is_success      () { '$is_success'        }
-            sub is_redirect     () { '$is_redirect'       }
-            sub is_error        () { '$is_error'          }
-            sub is_client_error () { '$is_client_error'   }
-            sub is_server_error () { '$is_server_error'   }
 
             package $package_name_message;
             use Scalar::Util qw(blessed);
@@ -71,7 +66,7 @@ sub _make_exceptions {
     }
 
     eval $code;
-    return @exception_classes
+    return @exception_classes;
 }
 
 use Exception::Class ( 'HTTP::Exception' => { isa => 'HTTP::Exception::Base' }, _make_exceptions() );

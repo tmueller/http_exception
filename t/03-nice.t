@@ -15,4 +15,9 @@ ok !defined HTTP::Exception->caught        , 'HTTP::Exception not caught';
 ok defined User::Defined::Exception->caught, 'User::Defined::Exception caught';
 ok defined Exception::Class->caught        , 'Exception::Class caught';
 
+eval { HTTP::Exception::200->throw; };
+ok defined HTTP::Exception->caught        , 'HTTP::Exception caught';
+ok !defined User::Defined::Exception->caught, 'User::Defined::Exception not caught';
+ok defined Exception::Class->caught        , 'Exception::Class caught';
+
 done_testing;

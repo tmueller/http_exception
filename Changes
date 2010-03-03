@@ -1,10 +1,14 @@
-0.01007
+0.01008 2010-03-03
+    fixed t/06-is_methods.t to not include Plack::Test anymore (evil copy/paste)
+    forgot dates in the Changes-File :\ 
+
+0.01007 2010-03-03
     fixed some POD
 
-0.01006
+0.01006 2010-03-02
     changed EMail-Address in packages to my CPAN-EMail
 
-0.01005
+0.01005 2010-03-02
     removed VERSION from pod, too much hassle to keep in sync with $VERSION
 
 0.01004 2010-03-02

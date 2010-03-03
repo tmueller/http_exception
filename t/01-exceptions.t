@@ -10,7 +10,7 @@ my %exception_class_classes;
 @exception_class_classes{@exception_class_classes} = undef;
 
 ################################################################################
-# HTTP::Exception Test
+# HTTP::Exception Tests
 ok  exists $exception_class_classes{'HTTP::Exception'}, 'HTTP::Exception acts as loader and exception';
 throws_ok sub { HTTP::Exception->throw(200) },  'HTTP::Exception::200';
 throws_ok sub { HTTP::Exception->throw },       qr/HTTP::Exception->throw needs a HTTP-Statuscode to throw/;
@@ -48,11 +48,19 @@ for my $exception_name (keys %exception_class_classes) {
     isa_ok  $e1, $exception_name;
     __PACKAGE__->_run_tests_for_exception_object($e1);
 
+    # testing catch via HTTP::Exception::NXX classes
+    # maybe using another tests' result is not so good, but anyways
+    my $error_code_range = $e1->code;
+    $error_code_range =~ s/\d{2}$/XX/;
+    eval { $exception_name->throw() };
+    my $e2 = "HTTP::Exception::$error_code_range"->caught;
+    __PACKAGE__->_run_tests_for_exception_object($e2);
+
     # testing whether catching via HTTP::Exception::... works
     eval { $exception_name->throw() };
-    my $e2 = $exception_name->caught;
-    isa_ok  $e2, $exception_name;
-    __PACKAGE__->_run_tests_for_exception_object($e2);
+    my $e3 = $exception_name->caught;
+    isa_ok  $e3, $exception_name;
+    __PACKAGE__->_run_tests_for_exception_object($e3);
 }
 
 
@@ -88,7 +96,7 @@ sub _run_tests_for_exception_object {
 
     SKIP: {
         # yes, ugly, I know
-        skip q(can't reliably determine expected Errorcode), 1 unless (ref($e) =~ /(\d+)$/);
+        skip q(can't reliably determine expected Errorcode), 2 unless (ref($e) =~ /(\d+)$/);
 
         is  $e->code,
             $1,

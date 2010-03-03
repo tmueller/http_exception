@@ -3,13 +3,42 @@ package HTTP::Exception::Base;
 use strict;
 use parent qw(Exception::Class::Base);
 
-our $VERSION = '0.01000';
+our $VERSION = '0.02000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
-sub as_string       { $_[0]->status_message                             }
-sub status_message  { $_[0]->{status_message} || $_[0]->_status_message }
+################################################################################
+# roll our own new, because of message and incompatibility with
+# message and status_message are synonyms
+# Class::Accessor::Fast
+sub new {
+    my $proto = shift;
+    my $class = ref $proto || $proto;
+    my %params = @_;
+    $params{status_message} = delete $params{message} if (exists $params{message});
 
-sub Fields { return qw~status_message~ }
+    my $self = bless {}, $class;
+    $self->_initialize(%params);
+
+    return $self;
+}
+
+################################################################################
+# used by Exception::Class for as_string
+sub full_message { shift->status_message }
+
+################################################################################
+# TODO default-value/required fields, maybe moose? but maybe a moose is too heavy
+# but on the other hand, handmade accessors suck
+sub status_message  {
+    $_[0]->{status_message}         =   $_[1] if (@_ > 1);
+    return $_[0]->{status_message}  ||= $_[0]->_status_message;
+}
+*message = \&status_message;
+
+################################################################################
+# though Exception::Class::Base does have fields, the Fields-Accessor returns ()
+# so no shift->SUPER::Fields is required
+sub Fields { qw(status_message) }
 
 1;
 

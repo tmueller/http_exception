@@ -2,10 +2,9 @@ use strict;
 
 use Test::More;
 use HTTP::Exception;
-use Plack::Test;
 use HTTP::Status;
 
-# this more or less testing, whether the is_ subs work
+# this is more or less testing, whether the is_ subs work
 # since inheritance should work, i don't bother testing the statusname-classes
 
 my @tests = (100,200,300,400,500);
