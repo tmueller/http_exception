@@ -1,6 +1,12 @@
-0.01008 2010-03-03
-    fixed t/06-is_methods.t to not include Plack::Test anymore (evil copy/paste)
-    forgot dates in the Changes-File :\ 
+0.02000 2010-03-03
+    Added "Tween-Classes" to the hierarchy (1XX .. 5XX)
+    Added Tests for "Tween-Classes" to the hierarchy (1XX .. 5XX)
+    Fixed t/06-is_methods.t not to use Plack::Test anymore
+    Changed HTTP::Exception::Base to use as_string from Exception::Class::Base
+    Added location for 3XX Exceptions
+    Added message and error as synonym for status_message (compat for Exception::Class)
+    Fixed t/06-is_methods.t to not include Plack::Test anymore (evil copy/paste)
+    Forgot dates in the Changes-File :\
 
 0.01007 2010-03-03
     fixed some POD

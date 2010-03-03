@@ -18,19 +18,22 @@ sub is_server_error () { 1  }
 
 =head1 NAME
 
-HTTP::Exception::Loader - Creates HTTP::Exception subclasses
+HTTP::Exception::5XX - Base Class for 5XX (redirect) Exceptions
+
+=head1 SYNOPSIS
+
+nothing here yet
 
 =head1 DESCRIPTION
 
-This Class Creates all HTTP::Exception subclasses.
+This package is the base class for all 5XX (redirect) Exceptions.
+This makes adding features for a range of exceptions easier.
 
 DON'T USE THIS PACKAGE DIRECTLY. 'use HTTP::Exception' does this for you.
-This Package does its job as soon as you call 'use HTTP::Exception'.
 
-Please refer to the Documentation of HTTP::Exception. The Naming Scheme of all
-subclasses created, as well as the caveats can be found there.
+=head1 ADDITIONAL FIELDS
 
-This Package calculates the Subclasses' Accessors at compiletime.
+Fields, that 5XX-Exceptions provide over HTTP::Exceptions.
 
 =head1 AUTHOR
 

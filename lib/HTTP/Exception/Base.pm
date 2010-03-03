@@ -7,17 +7,15 @@ our $VERSION = '0.02000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
-# roll our own new, because of message and incompatibility with
-# message and status_message are synonyms
-# Class::Accessor::Fast
+# roll our own new, because of message
+# error, message and status_message are synonyms
 sub new {
     my $proto = shift;
     my $class = ref $proto || $proto;
     my %params = @_;
     $params{status_message} = delete $params{message} if (exists $params{message});
 
-    my $self = bless {}, $class;
-    $self->SUPER::new(%params);
+    $class->SUPER::new(%params);
 }
 
 ################################################################################

@@ -1,6 +1,11 @@
 Build.PL
 Changes
 lib/HTTP/Exception.pm
+lib/HTTP/Exception/1XX.pm
+lib/HTTP/Exception/2XX.pm
+lib/HTTP/Exception/3XX.pm
+lib/HTTP/Exception/4XX.pm
+lib/HTTP/Exception/5XX.pm
 lib/HTTP/Exception/Base.pm
 lib/HTTP/Exception/Loader.pm
 Makefile.PL
@@ -15,6 +20,12 @@ t/04-subclassing.t
 t/05-plack.t
 t/06-is_methods.t
 t/07-status_messages.t
+t/10-fields_1xx.t
+t/11-fields_2xx.t
+t/12-fields_3xx.t
+t/13-fields_4xx.t
+t/14-fields_5xx.t
+t/15-fields_ec.t
 t/boilerplate.t
 t/manifest.t
 t/pod.t
