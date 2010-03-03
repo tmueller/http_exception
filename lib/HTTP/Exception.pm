@@ -5,7 +5,7 @@ use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.01006';
+our $VERSION = '0.01007';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
@@ -202,7 +202,7 @@ Constants, Statuscodes and Statusmessages
 =head2 L<Plack>, especially L<Plack::Middleware::HTTPExceptions>
 
 Have a look at Plack, because it rules in general. In the first place, this
-Module was written as the counterpart for L<Plack::Middleware::HTTPExceptions>,
+Module was written as the companion for L<Plack::Middleware::HTTPExceptions>,
 but since it doesn't depend on Plack, you can use it anywhere else, too.
 
 =head1 BUGS
