@@ -14,7 +14,6 @@ my $builder = Module::Build->new(
     requires => {qw~
         Exception::Class        0
         HTTP::Status            5.817
-        Class::Accessor::Fast   0.34
     ~},
     add_to_cleanup      => [ 'HTTP-Exception-*' ],
     create_makefile_pl  => 'traditional',

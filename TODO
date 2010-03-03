@@ -5,8 +5,6 @@
 - import parameter für 1XX, 2XX, ..., 5XX und ERRORS, CLIENT_ERRORS, ... machen
 - class::exception::XXX - field / accessor tests
 - class::exception::base - field / accessor tests
-- pidgin/irc auf tmueller umstellen
-- accessor generierung mit Class::Accessor::Fast clashes with new from base => write tests
-    => fix it
+# DONE pidgin/irc auf tmueller umstellen
 # DONE - as string from Exception::Class::Base
 # DONE - message from exception class base

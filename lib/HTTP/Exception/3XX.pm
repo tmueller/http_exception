@@ -3,14 +3,8 @@ package HTTP::Exception::3XX;
 use strict;
 use parent 'HTTP::Exception::Base';
 
-use Class::Accessor::Fast 'antlers'; # clashes with new from base => write tests
-
-
 our $VERSION = '0.02000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
-
-# Fields and accessors have to be kept in sync
-has location => (is => 'rw');
 
 sub is_info         () { '' }
 sub is_success      () { '' }
@@ -18,6 +12,11 @@ sub is_redirect     () { 1  }
 sub is_error        () { '' }
 sub is_client_error () { '' }
 sub is_server_error () { '' }
+
+sub location {
+    $_[0]->{location} = $_[1] if (@_ > 1);
+    return $_[0]->{location};
+}
 
 sub Fields {
     my $self    = shift;

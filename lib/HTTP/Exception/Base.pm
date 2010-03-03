@@ -17,9 +17,7 @@ sub new {
     $params{status_message} = delete $params{message} if (exists $params{message});
 
     my $self = bless {}, $class;
-    $self->_initialize(%params);
-
-    return $self;
+    $self->SUPER::new(%params);
 }
 
 ################################################################################
@@ -33,7 +31,8 @@ sub status_message  {
     $_[0]->{status_message}         =   $_[1] if (@_ > 1);
     return $_[0]->{status_message}  ||= $_[0]->_status_message;
 }
-*message = \&status_message;
+*message    = \&status_message;
+*error      = \&status_message;
 
 ################################################################################
 # though Exception::Class::Base does have fields, the Fields-Accessor returns ()
