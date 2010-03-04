@@ -1,3 +1,8 @@
+0.02003 2010-03-04
+    Removed parent.pm - dependency
+    Added base.pm - dependency, works better and is longer in Core
+    HTTP::Request::Common required for t/05-plack.t, othwerwise skipped
+
 0.02002 2010-03-04
     Some small POD enhancements for H::E::Base and H::E::Loader
 

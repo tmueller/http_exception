@@ -6,7 +6,6 @@ use HTTP::Exception;
 
 {
     package My::HTTP::Exception;
-    #use parent 'HTTP::Exception::OK'; # doesn't work WTF?
     use base 'HTTP::Exception::200';
 
     sub code    { 999 }

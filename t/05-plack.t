@@ -6,16 +6,18 @@ BEGIN {
     # Plack 0.9913 brings us Plack::Middleware::HTTPExceptions
     eval "use Plack 0.9913";
     plan skip_all => "Plack 0.9913 or newer required for this test" if $@;
+
+    eval "use HTTP::Request::Common";
+    plan skip_all => "HTTP::Request::Common required for this test" if $@;
 }
 
 use HTTP::Exception;
 use Plack::Test;
-use HTTP::Request::Common;
 use HTTP::Status;
+use HTTP::Request::Common;
 
 {
     package My::HTTP::Exception;
-    #use parent 'HTTP::Exception::405'; # doesn't work WTF?
     use base 'HTTP::Exception::405';
 
     sub code    { 404 }
@@ -24,7 +26,6 @@ use HTTP::Status;
 
 {
     package My::HTTP::Exception::WithStatusMessage;
-    #use parent 'HTTP::Exception::405'; # doesn't work WTF?
     use base 'HTTP::Exception::405';
 
     sub code    { 404 }

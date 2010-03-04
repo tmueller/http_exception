@@ -1,7 +1,7 @@
 package HTTP::Exception::3XX;
 
 use strict;
-use parent 'HTTP::Exception::Base';
+use base 'HTTP::Exception::Base';
 
 our $VERSION = '0.02000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases

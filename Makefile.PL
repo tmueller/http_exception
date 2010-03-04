@@ -8,10 +8,14 @@ WriteMakefile
           'EXE_FILES' => [],
           'VERSION_FROM' => 'lib/HTTP/Exception.pm',
           'PREREQ_PM' => {
-                           'Test::More' => 0,
-                           'Exception::Class' => '0',
+                           'warnings' => '0',
+                           'base' => '0',
+                           'Scalar::Util' => '0',
                            'Test::Exception' => 0,
-                           'HTTP::Status' => '5.817'
+                           'HTTP::Status' => '5.817',
+                           'Exception::Class' => '0',
+                           'Test::More' => 0,
+                           'strict' => '0'
                          }
         )
 ;

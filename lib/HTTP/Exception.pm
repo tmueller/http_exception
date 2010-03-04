@@ -5,7 +5,7 @@ use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.02002';
+our $VERSION = '0.02003';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
