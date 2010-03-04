@@ -31,17 +31,29 @@ SYNOPSIS
         if (my $e = HTTP::Exception::405->caught)       { do stuff } # won't catch
         if (my $e = HTTP::Exception::404->caught)       { do stuff } # will catch
         if (my $e = HTTP::Exception::NOT_FOUND->caught) { do stuff } # will catch
+        if (my $e = HTTP::Exception::4XX->caught)       { do stuff } # will catch all 4XX Exceptions
         if (my $e = HTTP::Exception->caught)            { do stuff } # will catch every HTTP::Exception
         if (my $e = Exception::Class->caught)           { do stuff } # catch'em all
 
-    You can create Exceptions and not throw them (don't know what that could
-    be usefull for, except testing).
+    You can create Exceptions and not throw them, because maybe you want to
+    set some fields manually. See "FIELDS" in HTTP::Exception and
+    "ACCESSORS" in HTTP::Exception for more info.
 
         # is not thrown, ie doesn't die, only created
         my $e = HTTP::Exception->new(404);
+
         # usual stuff works
         $e->code;               # 404
         $e->status_message      # Not Found
+
+        # set status_message to something else
+        $e->status_message('Nothing Here')
+
+        # fails, because code is only an accessor, see section ACCESSORS below
+        # $e->code(403);
+
+        # and finally throw our prepared exception
+        $e->throw;
 
 DESCRIPTION
     Every HTTP::Exception is a Exception::Class - Class. So the same
@@ -67,50 +79,73 @@ DESCRIPTION
 
 NAMING SCHEME
   HTTP::Exception::XXX
-    X is a Number and XXX is a valid HTTP-Statuscode
+    X is a Number and XXX is a valid HTTP-Statuscode. All HTTP-Statuscodes
+    are supported. See chapter "COMPLETENESS" in HTTP::Exception
 
   HTTP::Exception::STATUS_MESSAGE
     STATUS_MESSAGE is the same name as a HTTP::Status Constant WITHOUT the
-    HTTP_ at the beginning. So see "Constants" in HTTP::Status for more
+    HTTP_ at the beginning. So see "CONSTANTS" in HTTP::Status for more
     details.
 
-ACCESSORS
-  code Readonly
-    The HTTP-Statuscode
-
-  status_message
+ACCESSORS (READONLY)
+  code
     The HTTP-Statusmessage as provided by HTTP::Status
 
   is_info
-    Return TRUE if $code is an *Informational* status code (1xx). This class
-    of status code indicates a provisional response which can't have any
-    content.
+    Return TRUE if "$self-"code> is an *Informational* status code (1xx).
+    This class of status code indicates a provisional response which can't
+    have any content.
 
   is_success
-    Return TRUE if $code is a *Successful* status code (2xx).
+    Return TRUE if "$self-"code> is a *Successful* status code (2xx).
 
   is_redirect
-    Return TRUE if $code is a *Redirection* status code (3xx). This class of
-    status code indicates that further action needs to be taken by the user
-    agent in order to fulfill the request.
+    Return TRUE if "$self-"code> is a *Redirection* status code (3xx). This
+    class if status code indicates that further action needs to be taken by
+    the user agent in order to fulfill the request.
 
   is_error
-    Return TRUE if $code is an *Error* status code (4xx or 5xx). The
+    Return TRUE if "$self-"code> is an *Error* status code (4xx or 5xx). The
     function return TRUE for both client error or a server error status
     codes.
 
   is_client_error
-    Return TRUE if $code is an *Client Error* status code (4xx). This class
-    of status code is intended for cases in which the client seems to have
-    erred.
+    Return TRUE if "$self-"code> is an *Client Error* status code (4xx).
+    This class of status code is intended for cases in which the client
+    seems to have erred.
 
   is_server_error
-    Return TRUE if $code is an *Server Error* status code (5xx). This class
-    of status codes is intended for cases in which the server is aware that
-    it has erred or is incapable of performing the request.
+    Return TRUE if "$self-"code> is an *Server Error* status code (5xx).
+    This class of status codes is intended for cases in which the server is
+    aware that it has erred or is incapable of performing the request.
 
-    POD for is_ methods is Copy/Pasted from HTTP::Status, so check back
-    there and alert me of changes.
+    *POD for is_ methods is Copy/Pasted from HTTP::Status, so check back
+    there and alert me of changes.*
+
+FIELDS
+    Fields are the same as ACCESSORS except they can be set. Either you set
+    them during Exception creation (->new) or Exception throwing (->throw).
+
+        HTTP::Exception->new(200, status_message => "Everything's fine");
+        HTTP::Exception::200->new(status_message => "Everything's fine");
+        HTTP::Exception::OK->new(status_message => "Everything's fine");
+
+        HTTP::Exception->throw(200, status_message => "Everything's fine");
+        HTTP::Exception::200->throw(status_message => "Everything's fine");
+        HTTP::Exception::OK->throw(status_message => "Everything's fine");
+
+    Catch them in your Webframework like this
+
+        eval { ... }
+        if (my $e = HTTP::Exception->caught) {
+            print $e->code;          # 200
+            print $e->status_message # "Everything's fine" instead of the usual ok
+        }
+
+  status_message
+    DEFAULT The HTTP-Statusmessage as provided by HTTP::Status
+
+    A Message, that represents the Execptions' Status for Humans.
 
 PLACK
     HTTP::Exception can be used with Plack::Middleware::HTTPExceptions. But
@@ -123,7 +158,13 @@ COMPLETENESS
 
         HTTP::Exception->throw(200);
 
-    which throws an Exception of type OK. Maybe useless, but complete.
+    which throws an Exception of type OK. Maybe useless, but complete. A
+    more realworld-example would be a redirection
+
+        # all are exactly the same
+        HTTP::Exception->throw(301, location => 'google.com');
+        HTTP::Exception::301->throw(location => 'google.com');
+        HTTP::Exception::MOVED_PERMANENTLY->throw(location => 'google.com');
 
 CAVEATS
     The HTTP::Exception-Subclass-Creation relies on HTTP::Status. It's
@@ -141,9 +182,24 @@ CAVEATS
 AUTHOR
     Thomas Mueller, "<tmueller at cpan.org>"
 
-INSTALLATION
+SEE ALSO
+  Exception::Class, Exception::Class::Base
+    Consult Exception::Class' documentation for the Exception-Mechanism and
+    Exception::Class::Base' docs for a list of methods our caught Exception
+    is also capable of.
 
-To install this module, run the following commands:
+  HTTP::Status
+    Constants, Statuscodes and Statusmessages
+
+  Plack, especially Plack::Middleware::HTTPExceptions
+    Have a look at Plack, because it rules in general. In the first place,
+    this Module was written as the companion for
+    Plack::Middleware::HTTPExceptions, but since it doesn't depend on Plack,
+    you can use it anywhere else, too.
+
+
+INSTALLATION
+  To install this module, run the following commands:
 
 	perl Build.PL
 	./Build

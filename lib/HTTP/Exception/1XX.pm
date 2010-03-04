@@ -18,7 +18,7 @@ sub is_server_error () { '' }
 
 =head1 NAME
 
-HTTP::Exception::1XX - Base Class for 1XX (redirect) Exceptions
+HTTP::Exception::1XX - Base Class for 1XX (info) Exceptions
 
 =head1 SYNOPSIS
 
@@ -26,7 +26,7 @@ nothing here yet
 
 =head1 DESCRIPTION
 
-This package is the base class for all 1XX (redirect) Exceptions.
+This package is the base class for all 1XX (info) Exceptions.
 This makes adding features for a range of exceptions easier.
 
 DON'T USE THIS PACKAGE DIRECTLY. 'use HTTP::Exception' does this for you.
