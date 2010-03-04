@@ -1,9 +1,6 @@
 NAME
     HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
-VERSION
-    Version 0.01001
-
 SYNOPSIS
     HTTP::Exception lets you throw HTTP-Errors as Exceptions.
 

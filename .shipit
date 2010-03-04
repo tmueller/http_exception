@@ -4,4 +4,4 @@ steps = FindVersion, ChangeVersion, CheckChangeLog, Manifest, DistTest, Commit, 
 
 CheckChangeLog.file = Changes
 MakeDist.destination = ~/Working/CPAN-Distributions
-#git.push_to = origin
+git.push_to = origin
