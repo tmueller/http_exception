@@ -80,15 +80,14 @@ HTTP::Exception::Loader - Creates HTTP::Exception subclasses
 
 =head1 DESCRIPTION
 
-This Class Creates all HTTP::Exception subclasses.
+This Class Creates all L<HTTP::Exception> subclasses.
 
 DON'T USE THIS PACKAGE DIRECTLY. 'use HTTP::Exception' does this for you.
 This Package does its job as soon as you call 'use HTTP::Exception'.
 
-Please refer to the Documentation of HTTP::Exception. The Naming Scheme of all
-subclasses created, as well as the caveats can be found there.
-
-This Package calculates the Subclasses' Accessors at compiletime.
+Please refer to the Documentation of L<HTTP::Exception/"NAMING SCHEME">.
+The Naming Scheme of all subclasses created, as well as the caveats can
+be found there.
 
 =head1 AUTHOR
 

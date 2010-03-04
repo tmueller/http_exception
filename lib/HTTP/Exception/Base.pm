@@ -42,17 +42,17 @@ sub Fields { qw(status_message) }
 
 =head1 NAME
 
-HTTP::Exception::Base - Base class for exception classes created by HTTP::Exception
+HTTP::Exception::Base - Base Class for exception classes created by HTTP::Exception
 
 =head1 DESCRIPTION
 
 This Class is a Base class for exception classes created by HTTP::Exception.
-It inherits from Exception::Class::Base. Please refer to the Documentation
-of Exception::Class::Base.
+It inherits from L<Exception::Class::Base>. Please refer to the Documentation
+of L<Exception::Class::Base> for methods and accessors a HTTP::Exception inherits.
 
-You won't use this Class directly, so refer to the Documentation of
-HTTP::Exception. The methods and attributes this Class provides over
-Exception::Class::Base are described there.
+You won't use this Class directly, so refer to L<HTTP::Exception/"ACCESSORS">
+and L<HTTP::Exception/"FIELDS">. The methods and attributes this Class provides
+over Exception::Class::Base are described there.
 
 =head1 AUTHOR
 

@@ -5,7 +5,7 @@ use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.02001';
+our $VERSION = '0.02002';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
@@ -127,7 +127,7 @@ the HTTP_ at the beginning. So see L<HTTP::Status/"CONSTANTS"> for more details.
 
 =head2 code
 
-The HTTP-Statusmessage as provided by L<HTTP::Status>
+A valid HTTP-Statuscode. See L<HTTP::Status> for information on what codes exist.
 
 =head2 is_info
 

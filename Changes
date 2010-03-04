@@ -1,3 +1,6 @@
+0.02002 2010-03-04
+    Some small POD enhancements for H::E::Base and H::E::Loader
+
 0.02001 2010-03-04
     Fixed POD for HTTP::Exception::nXX-Classes (again copy/paste)
     Updated README
