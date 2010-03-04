@@ -16,25 +16,25 @@ name: HTTP-Exception
 provides:
   HTTP::Exception:
     file: lib/HTTP/Exception.pm
-    version: 0.02003
+    version: 0.02004
   HTTP::Exception::1XX:
     file: lib/HTTP/Exception/1XX.pm
-    version: 0.02000
+    version: 0.02004
   HTTP::Exception::2XX:
     file: lib/HTTP/Exception/2XX.pm
-    version: 0.02000
+    version: 0.02004
   HTTP::Exception::3XX:
     file: lib/HTTP/Exception/3XX.pm
-    version: 0.02000
+    version: 0.02004
   HTTP::Exception::4XX:
     file: lib/HTTP/Exception/4XX.pm
-    version: 0.02000
+    version: 0.02004
   HTTP::Exception::5XX:
     file: lib/HTTP/Exception/5XX.pm
-    version: 0.02000
+    version: 0.02004
   HTTP::Exception::Base:
     file: lib/HTTP/Exception/Base.pm
-    version: 0.02000
+    version: 0.02004
   HTTP::Exception::Loader:
     file: lib/HTTP/Exception/Loader.pm
     version: 0.02000
@@ -47,4 +47,4 @@ requires:
   warnings: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.02003
+version: 0.02004

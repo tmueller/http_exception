@@ -1,3 +1,6 @@
+0.02004 2010-03-04
+    Corrected $VERSION for changed modules
+
 0.02003 2010-03-04
     Removed parent.pm - dependency
     Added base.pm - dependency, works better and is longer in Core
