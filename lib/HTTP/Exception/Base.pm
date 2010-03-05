@@ -44,6 +44,10 @@ sub Fields { qw(status_message) }
 
 HTTP::Exception::Base - Base Class for exception classes created by HTTP::Exception
 
+=head1 VERSION
+
+0.02004
+
 =head1 DESCRIPTION
 
 This Class is a Base class for exception classes created by HTTP::Exception.

@@ -78,6 +78,10 @@ use Exception::Class ( 'HTTP::Exception' => { isa => 'HTTP::Exception::Base' }, 
 
 HTTP::Exception::Loader - Creates HTTP::Exception subclasses
 
+=head1 VERSION
+
+0.02000
+
 =head1 DESCRIPTION
 
 This Class Creates all L<HTTP::Exception> subclasses.

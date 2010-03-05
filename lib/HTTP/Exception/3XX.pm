@@ -33,6 +33,10 @@ sub Fields {
 
 HTTP::Exception::3XX - Base Class for 3XX (redirect) Exceptions
 
+=head1 VERSION
+
+0.02004
+
 =head1 SYNOPSIS
 
     use HTTP::Exception;

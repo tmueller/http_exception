@@ -20,6 +20,10 @@ sub is_server_error () { '' }
 
 HTTP::Exception::2XX - Base Class for 2XX (success) Exceptions
 
+=head1 VERSION
+
+0.02004
+
 =head1 SYNOPSIS
 
 nothing here yet

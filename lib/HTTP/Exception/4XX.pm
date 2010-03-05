@@ -20,6 +20,10 @@ sub is_server_error () { '' }
 
 HTTP::Exception::4XX - Base Class for 4XX (client error) Exceptions
 
+=head1 VERSION
+
+0.02004
+
 =head1 SYNOPSIS
 
 nothing here yet

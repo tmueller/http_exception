@@ -5,7 +5,7 @@ use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.02004';
+our $VERSION = '0.02005';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
@@ -33,6 +33,10 @@ sub caught {
 =head1 NAME
 
 HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
+
+=head1 VERSION
+
+0.02005
 
 =head1 SYNOPSIS
 

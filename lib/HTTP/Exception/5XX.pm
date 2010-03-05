@@ -20,6 +20,10 @@ sub is_server_error () { 1  }
 
 HTTP::Exception::5XX - Base Class for 5XX (server error) Exceptions
 
+=head1 VERSION
+
+0.02004
+
 =head1 SYNOPSIS
 
 nothing here yet

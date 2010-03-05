@@ -27,5 +27,7 @@ t/13-fields_4xx.t
 t/14-fields_5xx.t
 t/15-fields_ec.t
 t/boilerplate.t
+t/eol.t
+t/eol_special.t
 t/manifest.t
 t/pod.t
