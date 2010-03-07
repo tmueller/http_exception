@@ -1,3 +1,6 @@
+0.02006 2010-03-08
+    Added minimum version requirements to prerequisites
+
 0.02005 2010-03-05
     Added Pod VERSION sections back in, thanks to ShipIt::Step::ChangePodVersion ;) 
 

@@ -5,7 +5,7 @@ use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.02005';
+our $VERSION = '0.02006';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 # act as a kind of factory here
@@ -36,7 +36,20 @@ HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
 =head1 VERSION
 
-0.02005
+0.02006
+
+=begin readme
+
+=head1 INSTALLATION
+
+To install this module, run the following commands:
+
+    perl Build.PL
+    ./Build
+    ./Build test
+    ./Build install
+
+=end readme
 
 =head1 SYNOPSIS
 

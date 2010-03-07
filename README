@@ -1,6 +1,17 @@
 NAME
     HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
+VERSION
+    0.02006
+
+INSTALLATION
+    To install this module, run the following commands:
+
+        perl Build.PL
+        ./Build
+        ./Build test
+        ./Build install
+
 SYNOPSIS
     HTTP::Exception lets you throw HTTP-Errors as Exceptions.
 
@@ -36,8 +47,8 @@ SYNOPSIS
         if (my $e = Exception::Class->caught)           { do stuff } # catch'em all
 
     You can create Exceptions and not throw them, because maybe you want to
-    set some fields manually. See "FIELDS" in HTTP::Exception and
-    "ACCESSORS" in HTTP::Exception for more info.
+    set some fields manually. See HTTP::Exception and HTTP::Exception for
+    more info.
 
         # is not thrown, ie doesn't die, only created
         my $e = HTTP::Exception->new(404);
@@ -80,42 +91,42 @@ DESCRIPTION
 NAMING SCHEME
   HTTP::Exception::XXX
     X is a Number and XXX is a valid HTTP-Statuscode. All HTTP-Statuscodes
-    are supported. See chapter "COMPLETENESS" in HTTP::Exception
+    are supported. See chapter HTTP::Exception
 
   HTTP::Exception::STATUS_MESSAGE
     STATUS_MESSAGE is the same name as a HTTP::Status Constant WITHOUT the
-    HTTP_ at the beginning. So see "CONSTANTS" in HTTP::Status for more
-    details.
+    HTTP_ at the beginning. So see HTTP::Status for more details.
 
 ACCESSORS (READONLY)
   code
-    The HTTP-Statusmessage as provided by HTTP::Status
+    A valid HTTP-Statuscode. See HTTP::Status for information on what codes
+    exist.
 
   is_info
-    Return TRUE if "$self-"code> is an *Informational* status code (1xx).
+    Return TRUE if `$self-'code> is an *Informational* status code (1xx).
     This class of status code indicates a provisional response which can't
     have any content.
 
   is_success
-    Return TRUE if "$self-"code> is a *Successful* status code (2xx).
+    Return TRUE if `$self-'code> is a *Successful* status code (2xx).
 
   is_redirect
-    Return TRUE if "$self-"code> is a *Redirection* status code (3xx). This
+    Return TRUE if `$self-'code> is a *Redirection* status code (3xx). This
     class if status code indicates that further action needs to be taken by
     the user agent in order to fulfill the request.
 
   is_error
-    Return TRUE if "$self-"code> is an *Error* status code (4xx or 5xx). The
+    Return TRUE if `$self-'code> is an *Error* status code (4xx or 5xx). The
     function return TRUE for both client error or a server error status
     codes.
 
   is_client_error
-    Return TRUE if "$self-"code> is an *Client Error* status code (4xx).
+    Return TRUE if `$self-'code> is an *Client Error* status code (4xx).
     This class of status code is intended for cases in which the client
     seems to have erred.
 
   is_server_error
-    Return TRUE if "$self-"code> is an *Server Error* status code (5xx).
+    Return TRUE if `$self-'code> is an *Server Error* status code (5xx).
     This class of status codes is intended for cases in which the server is
     aware that it has erred or is incapable of performing the request.
 
@@ -180,7 +191,7 @@ CAVEATS
     unlikely.
 
 AUTHOR
-    Thomas Mueller, "<tmueller at cpan.org>"
+    Thomas Mueller, `<tmueller at cpan.org>'
 
 SEE ALSO
   Exception::Class, Exception::Class::Base
@@ -197,43 +208,38 @@ SEE ALSO
     Plack::Middleware::HTTPExceptions, but since it doesn't depend on Plack,
     you can use it anywhere else, too.
 
+BUGS
+    Please report any bugs or feature requests to `bug-http-exception at
+    rt.cpan.org', or through the web interface at
+    http://rt.cpan.org/NoAuth/ReportBug.html?Queue=HTTP-Exception. I will be
+    notified, and then you'll automatically be notified of progress on your
+    bug as I make changes.
 
-INSTALLATION
-  To install this module, run the following commands:
+SUPPORT
+    You can find documentation for this module with the perldoc command.
 
-	perl Build.PL
-	./Build
-	./Build test
-	./Build install
+        perldoc HTTP::Exception
 
-SUPPORT AND DOCUMENTATION
+    You can also look for information at:
 
-After installing, you can find documentation for this module with the
-perldoc command.
-
-    perldoc HTTP::Exception
-
-You can also look for information at:
-
-    RT, CPAN's request tracker
+    * RT: CPAN's request tracker
         http://rt.cpan.org/NoAuth/Bugs.html?Dist=HTTP-Exception
 
-    AnnoCPAN, Annotated CPAN documentation
+    * AnnoCPAN: Annotated CPAN documentation
         http://annocpan.org/dist/HTTP-Exception
 
-    CPAN Ratings
+    * CPAN Ratings
         http://cpanratings.perl.org/d/HTTP-Exception
 
-    Search CPAN
+    * Search CPAN
         http://search.cpan.org/dist/HTTP-Exception/
 
-
 LICENSE AND COPYRIGHT
+    Copyright 2010 Thomas Mueller.
 
-Copyright (C) 2010 Thomas Mueller
+    This program is free software; you can redistribute it and/or modify it
+    under the terms of either: the GNU General Public License as published
+    by the Free Software Foundation; or the Artistic License.
 
-This program is free software; you can redistribute it and/or modify it
-under the terms of either: the GNU General Public License as published
-by the Free Software Foundation; or the Artistic License.
+    See http://dev.perl.org/licenses/ for more information.
 
-See http://dev.perl.org/licenses/ for more information.

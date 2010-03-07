@@ -3,8 +3,8 @@ abstract: 'throw HTTP-Errors as (Exception::Class-) Exceptions'
 author:
   - 'Thomas Mueller <tmueller@cpan.org>'
 build_requires:
-  Test::Exception: 0
-  Test::More: 0
+  Test::Exception: 0.29
+  Test::More: 0.88
 configure_requires:
   Module::Build: 0.36
 generated_by: 'Module::Build version 0.3603'
@@ -16,7 +16,7 @@ name: HTTP-Exception
 provides:
   HTTP::Exception:
     file: lib/HTTP/Exception.pm
-    version: 0.02005
+    version: 0.02006
   HTTP::Exception::1XX:
     file: lib/HTTP/Exception/1XX.pm
     version: 0.02004
@@ -39,12 +39,12 @@ provides:
     file: lib/HTTP/Exception/Loader.pm
     version: 0.02000
 requires:
-  Exception::Class: 0
+  Exception::Class: 1.29
   HTTP::Status: 5.817
-  Scalar::Util: 0
+  Scalar::Util: 1.22
   base: 0
   strict: 0
   warnings: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.02005
+version: 0.02006

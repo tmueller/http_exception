@@ -2,10 +2,3 @@
 
 - have to figure out best practice for versions
 
-- shipit README
-    => Pod::Readme for output
-    => bei Dist::JosekiDisttype->new klauen zur erkennung der distri
-        => make oder build distri install anweisungen
-    => Pod::Select for INSTALL/INSTALLATION Section
-        => wenn nein => AUTHOR Section
-            => wenn nein => am ende anhängen

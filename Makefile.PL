@@ -10,11 +10,11 @@ WriteMakefile
           'PREREQ_PM' => {
                            'warnings' => '0',
                            'base' => '0',
-                           'Scalar::Util' => '0',
-                           'Test::Exception' => 0,
+                           'Scalar::Util' => '1.22',
+                           'Test::Exception' => '0.29',
                            'HTTP::Status' => '5.817',
-                           'Exception::Class' => '0',
-                           'Test::More' => 0,
+                           'Exception::Class' => '1.29',
+                           'Test::More' => '0.88',
                            'strict' => '0'
                          }
         )
