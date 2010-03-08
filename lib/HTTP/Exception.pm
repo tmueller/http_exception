@@ -1,12 +1,18 @@
 package HTTP::Exception;
 
 use strict;
-use HTTP::Exception::Loader;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
 our $VERSION = '0.02006';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
+
+################################################################################
+sub import {
+    my ($class) = shift;
+    require HTTP::Exception::Loader;
+    HTTP::Exception::Loader->import(@_);
+}
 
 # act as a kind of factory here
 sub new  {

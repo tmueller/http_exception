@@ -17,6 +17,7 @@ $VERSION = eval $VERSION; # numify for warning-free dev releases
 # - first create packages for Exception::Class, so it can create them on its own
 # - then extend those packages by putting methods into the same namespace
 sub _make_exceptions {
+    my %tags = @_;
     my (@http_statuses, @exception_classes);
     {
         no strict 'refs';
@@ -33,6 +34,9 @@ sub _make_exceptions {
         $http_status                =~ s/^HTTP_//;
         # replace the last 2 digits with XX for basename creation
         $statuscode_range           =~ s/\d{2}$/XX/;
+
+        # only create requested classes
+        next unless (exists $tags{$statuscode_range});
 
         my $package_name_code       = 'HTTP::Exception::'.$statuscode;
         my $package_name_base       = 'HTTP::Exception::'.$statuscode_range;
@@ -69,7 +73,40 @@ sub _make_exceptions {
     return @exception_classes;
 }
 
-use Exception::Class ( 'HTTP::Exception' => { isa => 'HTTP::Exception::Base' }, _make_exceptions() );
+################################################################################
+sub import {
+    my ($class, @tags) = @_;
+    my %tags;
+
+    if (@tags) {
+        my %known_tags  = (
+            '1XX'           => ['1XX'],
+            '2XX'           => ['2XX'],
+            '3XX'           => ['3XX'],
+            '4XX'           => ['4XX'],
+            '5XX'           => ['5XX'],
+            'REDIRECTION'   => ['3XX'],
+            'CLIENT_ERROR'  => ['4XX'],
+            'SERVER_ERROR'  => ['5XX'],
+            'ERROR'         => ['4XX', '5XX'],
+            'ALL'           => [qw~1XX 2XX 3XX 4XX 5XX~],
+        );
+
+        for my $import_tag (@tags) {
+            next unless ($known_tags{$import_tag});
+            $tags{$_} = undef for (@{ $known_tags{$import_tag} });
+        }
+    } else {
+        @tags{qw~1XX 2XX 3XX 4XX 5XX~} = ();
+    }
+
+    require Exception::Class;
+    Exception::Class->import(
+        'HTTP::Exception' => { isa => 'HTTP::Exception::Base' },
+        _make_exceptions(%tags)
+    );
+}
+
 
 1;
 
