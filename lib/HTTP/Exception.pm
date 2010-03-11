@@ -4,7 +4,7 @@ use strict;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.02006';
+our $VERSION = '0.03000';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
@@ -42,7 +42,7 @@ HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
 =head1 VERSION
 
-0.02006
+0.03000
 
 =begin readme
 
@@ -145,6 +145,44 @@ supported. See chapter L<HTTP::Exception/"COMPLETENESS">
 
 STATUS_MESSAGE is the same name as a L<HTTP::Status> Constant B<WITHOUT>
 the HTTP_ at the beginning. So see L<HTTP::Status/"CONSTANTS"> for more details.
+
+=head1 IMPORTING SPECIFIC ERROR RANGES
+
+It is possible to load only specific ranges of errors. For example
+
+    use HTTP::Exception qw(5XX);
+
+    HTTP::Exception::500->throw; # works
+    HTTP::Exception::400->throw; # won't work anymore
+
+will only create HTTP::Exception::500 till HTTP::Exception::510. In theory this
+should save some memory, but I don't have any numbers, that back up this claim.
+
+You can load multiple ranges
+
+    use HTTP::Exception qw(3XX 4XX 5XX);
+
+And there are aliases for ranges
+
+    use HTTP::Exception qw(CLIENT_ERROR)
+
+The following aliases exist and load the specified ranges:
+
+    REDIRECTION   => 3XX
+    CLIENT_ERROR  => 4XX
+    SERVER_ERROR  => 5XX
+    ERROR         => 4XX 5XX
+    ALL           => 1XX 2XX 3XX 4XX 5XX
+
+And of course, you can load multiple aliased ranges
+
+    use HTTP::Exception qw(REDIRECTION ERROR)
+
+ALL is the same as not specifying any specific range.
+
+    # the same
+    use HTTP::Exception qw(ALL);
+    use HTTP::Exception;
 
 =head1 ACCESSORS (READONLY)
 
