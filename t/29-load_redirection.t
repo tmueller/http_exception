@@ -5,6 +5,6 @@ use Test::HTTP::Exception::Ranges;
 
 use HTTP::Exception qw(REDIRECTION);
 
-Test::HTTP::Exception::Ranges::simple_test_range_ok(qw~3XX~);
+Test::HTTP::Exception::Ranges::test_range_ok(qw~3XX~);
 
 done_testing;

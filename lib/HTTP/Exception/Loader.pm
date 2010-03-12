@@ -69,6 +69,7 @@ sub _make_exceptions {
         ~;
     }
 
+    #print STDOUT $code;
     eval $code;
     return @exception_classes;
 }

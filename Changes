@@ -1,3 +1,6 @@
+0.03001 2010-03-11
+    Fixed tests not to emit warnings anymore
+
 0.03000 2010-03-11
     Added possibility to import only specific error ranges
     Added tests and Pod for this

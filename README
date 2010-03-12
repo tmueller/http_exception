@@ -2,7 +2,7 @@ NAME
     HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
 VERSION
-    0.03000
+    0.03001
 
 INSTALLATION
     To install this module, run the following commands:
