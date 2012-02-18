@@ -1,6 +1,0 @@
-# auto-generated shipit config file.
-steps = FindVersion, ChangeVersion, ChangePodVersion, CheckChangeLog, Readme, Manifest, DistTest, Commit, Tag, MakeDist, UploadCPAN, DistClean
-
-CheckChangeLog.file = Changes
-MakeDist.destination = ~/Working/CPAN-Distributions
-git.push_to = origin
