@@ -10,7 +10,7 @@ BEGIN {
     plan skip_all => 'Test::EOL required for testing EOL' if $@;
 }
 
-for my $filename (qw~Changes MANIFEST MANIFEST.SKIP META.yml README TODO~) {
+for my $filename (qw~Changes~) {
     unless (-f $filename) {
         diag "$filename does not exist";
         next;
