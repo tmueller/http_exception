@@ -1,3 +1,7 @@
+{{$NEXT}}
+    HTTP::Status 6.03 added a status, that broke this module
+    moved to Dist::Zilla
+
 0.03001 2010-03-11
     Fixed tests not to emit warnings anymore
 

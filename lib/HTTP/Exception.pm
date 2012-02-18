@@ -4,7 +4,7 @@ use strict;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 
-our $VERSION = '0.03001';
+our $VERSION = '0.04';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
@@ -42,7 +42,7 @@ HTTP::Exception - throw HTTP-Errors as (Exception::Class-) Exceptions
 
 =head1 VERSION
 
-0.03001
+0.04
 
 =begin readme
 
@@ -284,8 +284,9 @@ New Subclasses are created automatically, when constants are added to
 HTTP::Status. That means in turn, that Subclasses disappear, when constants
 are removed from L<HTTP::Status>.
 
-The Changes-File of L<HTTP::Status> indicates, that the last change to its
-constants was made in 2008. I think, that breaking changes are quite unlikely.
+Some constants were added to L<HTTP::Status>' in February 2012. As a result
+HTTP::Exception broke. But that was the result of uncareful coding on my side.
+I think, that breaking changes are now quite unlikely.
 
 =head1 AUTHOR
 
@@ -341,7 +342,7 @@ L<http://cpanratings.perl.org/d/HTTP-Exception>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/HTTP-Exception/>
+L<https://metacpan.org/release/HTTP-Exception>
 
 =back
 

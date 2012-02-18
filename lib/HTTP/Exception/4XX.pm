@@ -3,7 +3,7 @@ package HTTP::Exception::4XX;
 use strict;
 use base 'HTTP::Exception::Base';
 
-our $VERSION = '0.03000';
+our $VERSION = '0.04';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 sub is_info         () { '' }
@@ -22,7 +22,7 @@ HTTP::Exception::4XX - Base Class for 4XX (client error) Exceptions
 
 =head1 VERSION
 
-0.03000
+0.04
 
 =head1 SYNOPSIS
 
@@ -75,7 +75,7 @@ L<http://cpanratings.perl.org/d/HTTP-Exception>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/HTTP-Exception/>
+L<https://metacpan.org/release/HTTP-Exception>
 
 =back
 

@@ -3,7 +3,7 @@ package HTTP::Exception::Base;
 use strict;
 use base 'Exception::Class::Base';
 
-our $VERSION = '0.03000';
+our $VERSION = '0.04';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
@@ -46,7 +46,7 @@ HTTP::Exception::Base - Base Class for exception classes created by HTTP::Except
 
 =head1 VERSION
 
-0.03000
+0.04
 
 =head1 DESCRIPTION
 
@@ -94,7 +94,7 @@ L<http://cpanratings.perl.org/d/HTTP-Exception>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/HTTP-Exception/>
+L<https://metacpan.org/release/HTTP-Exception>
 
 =back
 

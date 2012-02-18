@@ -1,4 +1,4 @@
-package HTTP::Exception::Loader;
+        package HTTP::Exception::Loader;
 
 use strict;
 use HTTP::Exception::Base;
@@ -9,7 +9,7 @@ use HTTP::Exception::4XX;
 use HTTP::Exception::5XX;
 use HTTP::Status;
 
-our $VERSION = '0.03000';
+our $VERSION = '0.04';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
@@ -34,6 +34,8 @@ sub _make_exceptions {
         $http_status                =~ s/^HTTP_//;
         # replace the last 2 digits with XX for basename creation
         $statuscode_range           =~ s/\d{2}$/XX/;
+        # poor mans escaping, because of HTTP: 418 / I'm a teapot :\
+        $http_status_message        =~ s/'/\\'/g;
 
         # only create requested classes
         next unless (exists $tags{$statuscode_range});
@@ -51,7 +53,7 @@ sub _make_exceptions {
             $package_name_message   => {isa => $package_name_code};
 
         # TODO check whether evaled subs with a ()-prototype are compiled to constants
-        $code .= qq~;
+        $code .= qq~
 
             package $package_name_code;
             sub code            () { $statuscode }
@@ -118,7 +120,7 @@ HTTP::Exception::Loader - Creates HTTP::Exception subclasses
 
 =head1 VERSION
 
-0.03000
+0.04
 
 =head1 DESCRIPTION
 
@@ -167,7 +169,7 @@ L<http://cpanratings.perl.org/d/HTTP-Exception>
 
 =item * Search CPAN
 
-L<http://search.cpan.org/dist/HTTP-Exception/>
+L<https://metacpan.org/release/HTTP-Exception>
 
 =back
 
