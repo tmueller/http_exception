@@ -3,7 +3,7 @@ package HTTP::Exception::5XX;
 use strict;
 use base 'HTTP::Exception::Base';
 
-our $VERSION = '0.04';
+our $VERSION = '0.04001';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 sub is_info         () { '' }
@@ -22,7 +22,7 @@ HTTP::Exception::5XX - Base Class for 5XX (server error) Exceptions
 
 =head1 VERSION
 
-0.04
+0.04001
 
 =head1 SYNOPSIS
 

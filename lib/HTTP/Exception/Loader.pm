@@ -9,7 +9,7 @@ use HTTP::Exception::4XX;
 use HTTP::Exception::5XX;
 use HTTP::Status;
 
-our $VERSION = '0.04';
+our $VERSION = '0.04001';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
@@ -120,7 +120,7 @@ HTTP::Exception::Loader - Creates HTTP::Exception subclasses
 
 =head1 VERSION
 
-0.04
+0.04001
 
 =head1 DESCRIPTION
 

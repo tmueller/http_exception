@@ -1,4 +1,9 @@
 {{$NEXT}}
+    RT 75271: AutoPrereq of Dist::Zilla found too many dependencies,
+        * fixed by stating dependencies explicitly
+        (thanks jquelin)
+
+0.04      2012-02-18 22:04:20 Europe/Berlin
     HTTP::Status 6.03 added a status, that broke this module
     moved to Dist::Zilla
 

@@ -3,7 +3,7 @@ package HTTP::Exception::Base;
 use strict;
 use base 'Exception::Class::Base';
 
-our $VERSION = '0.04';
+our $VERSION = '0.04001';
 $VERSION = eval $VERSION; # numify for warning-free dev releases
 
 ################################################################################
@@ -46,7 +46,7 @@ HTTP::Exception::Base - Base Class for exception classes created by HTTP::Except
 
 =head1 VERSION
 
-0.04
+0.04001
 
 =head1 DESCRIPTION
 
