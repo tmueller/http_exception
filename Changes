@@ -1,4 +1,10 @@
 {{$NEXT}}
+    RT 79021: Eliminate warnings about "subroutine redefined"
+        * subroutine redefined warnings under mod_perl silenced
+        * created testcase "emulating" mod_perl
+    removed shebang in authortests
+
+0.04001   2012-02-24 22:55:01 Europe/Berlin
     RT 75271: AutoPrereq of Dist::Zilla found too many dependencies,
         * fixed by stating dependencies explicitly
         (thanks jquelin)

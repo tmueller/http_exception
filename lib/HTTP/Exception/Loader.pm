@@ -1,6 +1,8 @@
-        package HTTP::Exception::Loader;
+package HTTP::Exception::Loader;
 
 use strict;
+use warnings;
+
 use HTTP::Exception::Base;
 use HTTP::Exception::1XX;
 use HTTP::Exception::2XX;
@@ -71,8 +73,12 @@ sub _make_exceptions {
         ~;
     }
 
-    #print STDOUT $code;
-    eval $code;
+    # RT https://rt.cpan.org/Ticket/Display.html?id=79021
+    # silence warnings about "subroutine redefined" in a mod_perl environment
+    {
+        no warnings 'redefine';
+        eval $code;
+    }
     return @exception_classes;
 }
 
