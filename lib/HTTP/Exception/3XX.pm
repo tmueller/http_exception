@@ -3,9 +3,6 @@ package HTTP::Exception::3XX;
 use strict;
 use base 'HTTP::Exception::Base';
 
-our $VERSION = '0.04001';
-$VERSION = eval $VERSION; # numify for warning-free dev releases
-
 sub is_info         () { '' }
 sub is_success      () { '' }
 sub is_redirect     () { 1  }
@@ -32,10 +29,6 @@ sub Fields {
 =head1 NAME
 
 HTTP::Exception::3XX - Base Class for 3XX (redirect) Exceptions
-
-=head1 VERSION
-
-0.04001
 
 =head1 SYNOPSIS
 

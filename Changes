@@ -1,4 +1,8 @@
 {{$NEXT}}
+    Versions are now handled by Dist::Zilla::Plugin::PkgVersion
+    deleted 2 unused testclasses
+    
+0.04002   2012-08-17 00:08:19 Europe/Berlin
     RT 79021: Eliminate warnings about "subroutine redefined"
         * subroutine redefined warnings under mod_perl silenced
         * created testcase "emulating" mod_perl

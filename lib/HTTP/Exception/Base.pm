@@ -3,9 +3,6 @@ package HTTP::Exception::Base;
 use strict;
 use base 'Exception::Class::Base';
 
-our $VERSION = '0.04001';
-$VERSION = eval $VERSION; # numify for warning-free dev releases
-
 ################################################################################
 # roll our own new, because of message
 # error, message and status_message are synonyms
@@ -43,10 +40,6 @@ sub Fields { qw(status_message) }
 =head1 NAME
 
 HTTP::Exception::Base - Base Class for exception classes created by HTTP::Exception
-
-=head1 VERSION
-
-0.04001
 
 =head1 DESCRIPTION
 

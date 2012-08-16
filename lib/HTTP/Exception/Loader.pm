@@ -11,9 +11,6 @@ use HTTP::Exception::4XX;
 use HTTP::Exception::5XX;
 use HTTP::Status;
 
-our $VERSION = '0.04001';
-$VERSION = eval $VERSION; # numify for warning-free dev releases
-
 ################################################################################
 # little bit messy, but solid
 # - first create packages for Exception::Class, so it can create them on its own
@@ -123,10 +120,6 @@ sub import {
 =head1 NAME
 
 HTTP::Exception::Loader - Creates HTTP::Exception subclasses
-
-=head1 VERSION
-
-0.04001
 
 =head1 DESCRIPTION
 

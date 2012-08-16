@@ -3,9 +3,6 @@ package HTTP::Exception::2XX;
 use strict;
 use base 'HTTP::Exception::Base';
 
-our $VERSION = '0.04001';
-$VERSION = eval $VERSION; # numify for warning-free dev releases
-
 sub is_info         () { '' }
 sub is_success      () { 1 }
 sub is_redirect     () { '' }
@@ -19,10 +16,6 @@ sub is_server_error () { '' }
 =head1 NAME
 
 HTTP::Exception::2XX - Base Class for 2XX (success) Exceptions
-
-=head1 VERSION
-
-0.04001
 
 =head1 SYNOPSIS
 
