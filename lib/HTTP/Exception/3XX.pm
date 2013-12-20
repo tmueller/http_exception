@@ -58,7 +58,7 @@ Fields, that 3XX-Exceptions provide over HTTP::Exceptions.
 
 =head2 location
 
-Indicates, where the browser is beeing redirected to.
+Indicates, where the browser is being redirected to.
 
 =head1 AUTHOR
 
