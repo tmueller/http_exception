@@ -1,4 +1,11 @@
 {{$NEXT}}
+    corrected Encoding in dist.ini,
+        due to CPAN Testers reporting an invalid byte sequence in the Makefile
+
+0.04004   2012-08-17 01:00:11 Europe/Berlin
+    Dist::Zilla::Plugin::GitHub::Meta extracts correct Metainfos now
+
+0.04003   2012-08-17 00:38:56 Europe/Berlin
     Versions are now handled by Dist::Zilla::Plugin::PkgVersion
     deleted 2 unused testclasses
     
