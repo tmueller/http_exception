@@ -75,6 +75,7 @@ sub _make_exceptions {
     {
         no warnings 'redefine';
         eval $code;
+        die "HTTP::Exception::Loader error: $@\n$code\n" if $@;
     }
     return @exception_classes;
 }
