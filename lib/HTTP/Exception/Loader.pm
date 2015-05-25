@@ -56,7 +56,7 @@ sub _make_exceptions {
 
             package $package_name_code;
             sub code            () { $statuscode }
-            sub _status_message () { '$http_status_message' }
+            sub _status_message () { q{$http_status_message} }
 
             package $package_name_message;
             use Scalar::Util qw(blessed);
