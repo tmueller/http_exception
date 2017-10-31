@@ -1,6 +1,7 @@
 package HTTP::Exception::Base;
 
 use strict;
+use warnings;
 use base 'Exception::Class::Base';
 
 ################################################################################

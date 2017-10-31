@@ -1,6 +1,7 @@
 package HTTP::Exception::2XX;
 
 use strict;
+use warnings;
 use base 'HTTP::Exception::Base';
 
 sub is_info         () { '' }

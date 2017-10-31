@@ -1,6 +1,7 @@
 {{$NEXT}}
     - typo fix (thanks dsteinbrunner)
     - Added [MetaJSON] so releases will include META.json
+    - Added "use warnings" to all modules
     
 0.04005   2014-02-14 00:03:43+01:00 Europe/Berlin
     corrected Encoding in dist.ini,
