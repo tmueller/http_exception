@@ -298,6 +298,8 @@ capable of.
 
 Constants, Statuscodes and Statusmessages
 
+=head2 L<HTTP::Throwable>, built on top of the more modern L<Throwable> framework (the successor to L<Exception::Class>)
+
 =head2 L<Plack>, especially L<Plack::Middleware::HTTPExceptions>
 
 Have a look at Plack, because it rules in general. In the first place, this
