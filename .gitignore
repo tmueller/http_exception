@@ -12,3 +12,4 @@ pod2htm*.tmp
 HTTP-Exception-*
 *META.yml
 MANIFEST.bak
+.build
