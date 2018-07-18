@@ -1,6 +1,7 @@
 package HTTP::Exception;
 
 use strict;
+use warnings;
 use HTTP::Status;
 use Scalar::Util qw(blessed);
 

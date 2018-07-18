@@ -2,6 +2,7 @@ package HTTP::Exception::Loader;
 
 use strict;
 use warnings;
+use warnings;
 
 use HTTP::Exception::Base;
 use HTTP::Exception::1XX;
