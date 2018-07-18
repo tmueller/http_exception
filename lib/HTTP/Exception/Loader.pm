@@ -34,8 +34,6 @@ sub _make_exceptions {
         $http_status                =~ s/^HTTP_//;
         # replace the last 2 digits with XX for basename creation
         $statuscode_range           =~ s/\d{2}$/XX/;
-        # poor mans escaping, because of HTTP: 418 / I'm a teapot :\
-        $http_status_message        =~ s/'/\\'/g;
 
         # only create requested classes
         next unless (exists $tags{$statuscode_range});
